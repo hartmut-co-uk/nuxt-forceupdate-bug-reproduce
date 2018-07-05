@@ -1,6 +1,32 @@
 # nuxt-forceupdate-bug-reproduce
 
-> Nuxt.js project
+> **Nuxt page fn $forceUpdate exists when running in dev mode but not in prod (build, start) [nuxt-edge]**
+> https://cmty.app/nuxt/nuxt.js/issues/c7337
+
+## Steps to reproduce 
+
+Hi, please follow reproduction link provided.
+
+X.1) git clone https://github.com/hartmut-co-uk/nuxt-forceupdate-bug-reproduce.git   
+X.2) `yarn`   
+A.1) start the app via `yarn run dev`   
+A.2) open start page, use (click) buttons - in particular top button from layout - '[page.$forceUpdate from layout]'   
+A.3) check console / store / $store.state.random template rendered output   
+A.4) the button from layout '[page.$forceUpdate from layout]' does invoke the $forceUpdate - triggering the page `fetch` method -> store commit -> state change..   
+
+B.1) build and start the app in prod mode via  `yarn run build && yarn start`   
+B.2) open start page, use (click) buttons - in particular top button from layout - '[page.$forceUpdate from layout]'   
+B.3) check console / store / $store.state.random template rendered output   
+B.4) doesn't work...   
+
+
+## What is expected ?
+A.4) & B.4) should result in the same behaviour client side.
+running nuxt in built / prod mode should allow to call `this.$refs.page.$forceUpdate()`
+
+## What is actually happening?
+it's working in dev mode, not in prod mode
+
 
 ## Build Setup
 
@@ -18,5 +44,3 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).

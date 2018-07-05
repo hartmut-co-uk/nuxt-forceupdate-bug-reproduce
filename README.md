@@ -27,6 +27,13 @@ running nuxt in built / prod mode should allow to call `this.$refs.page.$forceUp
 ## What is actually happening?
 it's working in dev mode, not in prod mode
 
+## Additional comments?
+This has been setup & tested in nuxt-edge   
+
+Please ask (cmty link) if any questions!   
+
+Usage scenario: from layout page header bar - I have a global 'create' which doesn't do a route change but allows creating (http POST) new elements via API - and after success redirect / reload current page - which is not a route change - but should invoke the page's fetch method to re-fetch data from API (via store..)
+
 
 ## Build Setup
 

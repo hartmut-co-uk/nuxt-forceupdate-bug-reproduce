@@ -12,6 +12,7 @@
       <button @click="$store.commit('update')">$store.commit('update') directly from page</button>
       <!--<h3>random: {{ random }}</h3>-->
       <h3>$store.state.random: {{ $store.state.random }}</h3>
+      <h3>asyncDataRandom: {{ asyncDataRandom }}</h3>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -36,12 +37,17 @@
     methods: {
       forceUpdate: function () {
         console.log('page calls this.$forceUpdate:', this.$forceUpdate)
+
         this.$forceUpdate()
       }
     },
     fetch ({ store }) {
       console.log('fetch, calls store.commit(\'update\')')
       store.commit('update')
+    },
+    asyncData (context) {
+      console.log('exec asyncData')
+      return { asyncDataRandom: Math.random() }
     }
   }
 </script>

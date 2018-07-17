@@ -9,15 +9,18 @@ Hi, please follow reproduction link provided.
 
 X.1) git clone https://github.com/hartmut-co-uk/nuxt-forceupdate-bug-reproduce.git   
 X.2) `yarn`   
+
 A.1) start the app via `yarn run dev`   
 A.2) open start page, use (click) buttons - in particular top button from layout - '[page.$forceUpdate from layout]'   
 A.3) check console / store / $store.state.random template rendered output   
 A.4) the button from layout '[page.$forceUpdate from layout]' does invoke the $forceUpdate - triggering the page `fetch` method -> store commit -> state change..   
+A.y) adding `asyncData` into the mix - not working in dev mode - it's being executed - but not picked up by watchers -> change in data not re-rendered/reflected by component
 
 B.1) build and start the app in prod mode via  `yarn run build && yarn start`   
 B.2) open start page, use (click) buttons - in particular top button from layout - '[page.$forceUpdate from layout]'   
 B.3) check console / store / $store.state.random template rendered output   
 B.4) doesn't work...   
+B.y) adding `asyncData` into the mix - not working in prod mode
 
 
 ## What is expected ?
